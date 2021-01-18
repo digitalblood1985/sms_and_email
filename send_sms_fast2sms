@@ -1,0 +1,25 @@
+import requests
+import json
+
+
+def send_sms(numbers_separated_by_comma, message_to_send):
+    url = 'https://www.fast2sms.com/dev/bulk'
+    parameters = {
+        'authorization': 'lWRh92nfuiwxkq7t6argZUsFIQObcAM8DYePyzTJVGd1jS30ELoPf4k9TMJmU6OhIiAvHta1Gw78Esj5',
+        'sender_id': 'FSTSMS',
+        'message': message_to_send,
+        'language': 'english',
+        'route': 'p',
+        'numbers': numbers_separated_by_comma
+    }
+
+    response = requests.get(url, params=parameters)
+    response_dictionary = response.json()
+    response_dictionary
+
+
+# Invoke 'send_sms' function
+numbers = "8197434836"
+message = """Dear Vindhya,
+You have own a lottory worth rupees 1 Cr. To claim the reward, click on the link http://bit.ly/2KoPN1h"""
+send_sms(numbers, message)
